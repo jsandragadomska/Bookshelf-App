@@ -1,9 +1,6 @@
 package com.gadomska.bookshelfapp;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/books/")
+@RequestMapping("/api/books")
 public class BookshelfApi {
 
     private List<Book> books;
@@ -32,5 +29,20 @@ public class BookshelfApi {
         Optional<Book> first = books.stream().
                 filter(element -> element.getId() == index).findFirst();
         return first.get();
+    }
+
+    @PostMapping
+    public boolean addBook(@RequestBody Book book){
+        return books.add(book);
+    }
+
+    @PutMapping
+    public boolean updateBook(@RequestBody Book book){
+        return books.add(book);
+    }
+
+    @DeleteMapping
+    public boolean deleteBook(@RequestParam int index){
+        return books.removeIf(element -> element.getId() == index);
     }
 }
