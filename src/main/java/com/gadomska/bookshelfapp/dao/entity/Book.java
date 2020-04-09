@@ -1,4 +1,4 @@
-package com.gadomska.bookshelfapp;
+package com.gadomska.bookshelfapp.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
